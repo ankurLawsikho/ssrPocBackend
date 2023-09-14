@@ -8,6 +8,8 @@ router.post('/get-all-user', controller.getAllUser);
 router.post('/add-course', controller.createCourse);
 router.get('/get-all-course', controller.getAllCourse);
 
+router.post('/user-login', controller.login);
+
 
 // Sign Related Apis
 

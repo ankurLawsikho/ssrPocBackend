@@ -5,6 +5,44 @@ const jwt = require("jsonwebtoken");
 const fs = require('fs');
 
 
+module.exports.login = async (req,   res)    =>  {
+    try{
+
+        let email = req.body.email ? req.body.email : '';
+
+        const userDet = await UserRepo.GetByParameter({
+            email
+        })
+
+        if(userDet.length === 0) {
+            res.send({
+                code: 2,
+                message: "User Not EXist",
+                userDet: userDet
+            });
+            return;
+        }
+
+        res.send({
+            code: 1,
+            message: "User EXist",
+            userDet: userDet
+        });
+        return;
+        
+
+        
+        
+    }catch(error){
+        res.send({
+            code: 3,
+            message: "Error",
+            payload:  error.message
+        })
+    }
+}
+
+
 // Here, this function is used to create the roles
 module.exports.create = async (req,   res)    =>  {
     try{
