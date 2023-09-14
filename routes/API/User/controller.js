@@ -11,12 +11,20 @@ module.exports.create = async (req,   res)    =>  {
 
         let name = req.body.name ? req.body.name : '';
         let email = req.body.email ? req.body.email : '';
-        let password = req.body.password ? req.body.password : '';
+        let phone = req.body.phone ? req.body.phone : '';
+        let password = req.body.password ? req.body.password : '123456';
+        let typeOfUser = req.body.typeOfUser ? req.body.typeOfUser : 'normal';
+        let companySize = req.body.companySize ? req.body.companySize : 0;
+        let companyName = req.body.companyName ? req.body.companyName : '';
 
         let Userinfo = {
             name: name,
             email: email,
-            password: password
+            phone: phone,
+            password: password,
+            typeOfUser: typeOfUser,
+            companySize: companySize,
+            companyName: companyName
         };
 
         // Here, we are inserting the role     

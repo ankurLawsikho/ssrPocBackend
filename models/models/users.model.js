@@ -10,9 +10,26 @@ const UsersSchema = new Schema({
         type: String,
         default: ''
     },
+    phone: {
+        type: Number,
+        default: 0
+    },
     password: {
         type: String,
-        default: ''
+        default: '123456'
+    },
+    companySize: {
+        type: Number,
+        default: 0
+    },
+    companyName: {
+        type: String,
+        default: '',
+    },
+    typeOfUser: {
+        type: String,
+        default: 'normal',
+        enum: ['normal', 'forcourse', 'forservice']
     },
     status: {
         type: Number,
