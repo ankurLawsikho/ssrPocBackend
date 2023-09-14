@@ -1,6 +1,8 @@
 const UserRepo = require('../../../models/repositories/user.repository');
 const CourseRepo = require('../../../models/repositories/course.repository');
 
+const WebinarRepo = require('../../../models/repositories/webinar.repository');
+
 const jwt = require("jsonwebtoken");
 const fs = require('fs');
 
@@ -147,6 +149,56 @@ module.exports.getAllCourse = async (req,   res)    =>  {
             code: 1,
             message: "Successful",
             payload: courseDetails
+        })
+        return;
+        
+    }catch(error){
+        res.send({
+            code: 3,
+            message: "Error",
+            payload:  error.message
+        })
+    }
+}
+
+module.exports.createWebinar = async (req,   res)    =>  {
+    try{
+
+        let name = req.body.name ? req.body.name : '';
+        let description = req.body.description ? req.body.description : '';
+        
+        let info = {
+            name: name,
+            description: description
+        };
+   
+        let SaveInfo = await WebinarRepo.saveDetails(info);
+        
+        res.send({
+            code: 1,
+            message: "Successful",
+            payload: SaveInfo
+        })
+        return;
+        
+    }catch(error){
+        res.send({
+            code: 3,
+            message: "Error",
+            payload:  error.message
+        })
+    }
+}
+
+module.exports.getAllWebinars = async (req,   res)    =>  {
+    try{
+
+        let webinarsDetails = await WebinarRepo.getAllItem();
+        
+        res.send({
+            code: 1,
+            message: "Successful",
+            payload: webinarsDetails
         })
         return;
         

@@ -10,6 +10,11 @@ router.get('/get-all-course', controller.getAllCourse);
 
 router.post('/user-login', controller.login);
 
+router.post('/add-webinar', controller.createWebinar);
+router.get('/get-all-webinar', controller.getAllWebinars);
+
+
+
 
 // Sign Related Apis
 
