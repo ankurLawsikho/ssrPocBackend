@@ -13,6 +13,12 @@ router.post('/user-login', controller.login);
 router.post('/add-webinar', controller.createWebinar);
 router.get('/get-all-webinar', controller.getAllWebinars);
 
+router.get('/get-course-by-name/:name', controller.getCourseByName);
+
+
+
+
+
 
 
 

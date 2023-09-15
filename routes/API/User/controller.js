@@ -115,10 +115,12 @@ module.exports.createCourse = async (req,   res)    =>  {
 
         let name = req.body.name ? req.body.name : '';
         let description = req.body.description ? req.body.description : '';
+        let coursefee = req.body.coursefee ? req.body.coursefee : 0;
         
         let courseinfo = {
             name: name,
-            description: description
+            description: description,
+            coursefee: coursefee
         };
    
         let SaveInfo = await CourseRepo.saveDetails(courseinfo);
@@ -210,4 +212,29 @@ module.exports.getAllWebinars = async (req,   res)    =>  {
         })
     }
 }
+
+
+module.exports.getCourseByName = async (req,   res)    =>  {
+    try{
+        const courseName = req.params.name;
+        let couseDetail = await CourseRepo.GetByParameter({
+            "name": courseName
+        });
+        
+        res.send({
+            code: 1,
+            message: "Successful",
+            payload: couseDetail
+        })
+        return;
+        
+    }catch(error){
+        res.send({
+            code: 3,
+            message: "Error",
+            payload:  error.message
+        })
+    }
+}
+
 
